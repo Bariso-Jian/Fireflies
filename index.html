@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fireflies</title>
+    <link rel="icon" href="favicon.ico"> 
 
     <style>
         * {
@@ -36,6 +37,10 @@
 
         .selections {
             padding: 0.2rem 0.6rem;
+        }
+
+        #favivi {
+            width: 15%;
         }
 
         #red {
@@ -93,6 +98,18 @@
             width: 2rem;
             border: 1px solid white;
         }
+
+        #glow {
+            background-color: black;
+            border: none;
+            font-size: 2rem;
+        }
+
+        #logo {
+            display: flex;
+            align-items: center;
+            transform: translateX(45%);
+        }
     </style>
 </head>
 <body>
@@ -107,7 +124,9 @@
             <button id="pink"></button>
             <button id="white"></button>
         </div>
-        <div>
+        <div id="logo">
+            <img src="favivi.png" alt="icon" id="favivi">
+            <h2>Fireflies</h2>
         </div>
     </header>
     <div id="container">
@@ -188,8 +207,8 @@
 
             c.globalCompositeOperation = 'lighter';
             circles.forEach(circle => {
-                circle.x += (mouse.x - circle.x) * 0.007 + Math.sin(Date.now() / 500) * 0.5;
-                circle.y += (mouse.y - circle.y) * 0.007 + Math.cos(Date.now() / 500) * 0.5;
+                circle.x += (mouse.x - circle.x) * 0.01 + Math.sin(Date.now() / 500) * 0.5;
+                circle.y += (mouse.y - circle.y) * 0.01 + Math.cos(Date.now() / 500) * 0.5;
 
                 c.globalAlpha = 0.4;
                 c.beginPath();
@@ -206,13 +225,6 @@
 
         setInterval(spawnCircle, 800);
         draw();
-
-        setInterval(() => {
-            let pulsing = 0
-            pulsing++
-
-
-        }, 10);
 
         red.addEventListener("click", () => {
             circleColor = "rgba(255, 163, 163, 0.8)";
